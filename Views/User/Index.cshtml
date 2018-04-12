@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model login_registration.Models.User
+<div class="jumbotron text-center">
+  <h2>Hello!</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Register</h3>
+            <form asp-controller="User" asp-action="Register" method="post">
+                <table class="table" id="borderless">
+                    <tr>
+                        <td><label asp-for="firstname"></label></td>
+                        <td><input asp-for="firstname"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="error"><span asp-validation-for="firstname"></span></td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="lastname"></label></td>
+                        <td><input asp-for="lastname"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="error"><span asp-validation-for="lastname"></span></td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="email"></label></td>
+                        <td><input asp-for="email"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="error"><span asp-validation-for="email"></span><p class="error">@TempData["email_exists"]</p></td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="password"></label></td>
+                        <td><input asp-for="password"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="error"><span asp-validation-for="password"></span></td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="passwordconf"></label></td>
+                        <td><input asp-for="passwordconf"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="error"><span asp-validation-for="passwordconf"></span></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button type="submit">Register</button></td>
+                    </tr>
+                </table>                
+            </form>            
+        </div>
+        <div class="col-md-6">
+            <h3>Login</h3>
+            <form action="login" method="post">
+                <table class="table" id="borderless2">
+                    <tr>
+                        <td><label>Email</label></td>
+                        <td><input type="text" name="email"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Password</label></td>
+                        <td><input type="password" name="password"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button type="submit">Login</button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @TempData["emailReg"]
+                            @TempData["passError"]
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

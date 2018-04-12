@@ -1,0 +1,7 @@
+<h1>Success!</h1>
+@foreach(var user in @ViewBag.allUsers)
+{
+    <h3>@user["firstname"]</h3>
+    <h3>@user["lastname"]</h3>
+    <h3>@user["email"]</h3>
+}
